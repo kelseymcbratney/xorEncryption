@@ -1,4 +1,4 @@
-#include "xorEncyption.h"
+#include "xorEncryption.h"
 #include <cctype>
 #include <cstring>
 #include <iostream>
