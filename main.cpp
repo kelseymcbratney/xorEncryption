@@ -33,5 +33,7 @@ int main(int argc, char *argv[]) {
   Obj.keyFile = keyFile;
   Obj.mode = mode;
 
+  Obj.openFile();
+
   return 0;
 }

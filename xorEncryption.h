@@ -9,4 +9,6 @@ public:
   string outputFile;
   string keyFile;
   string mode;
+
+  void openFile();
 };
