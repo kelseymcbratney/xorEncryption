@@ -1,3 +1,4 @@
+#include <complex>
 #include <iostream>
 using namespace std;
 #pragma once
@@ -10,5 +11,15 @@ public:
   string keyFile;
   string mode;
 
-  void openFile();
+  void init();
+
+private:
+  string openFile(string fileName);
+  void addBuffer(string fileContent);
+  void removeBuffer(string fileContent);
+  void encrypt(string fileContent, string keyFileString);
+  void decrypt(string fileContent, string keyFileString);
+  void writeFile(string fileContent, string outputFile);
+  string inputFileString;
+  string keyFileString;
 };
