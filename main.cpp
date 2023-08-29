@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
   string arguementHelp = "Please Run Program with the Following Arguments\n"
-                         "arg1 = cipherFunction -> 'B' or 'G'\n"
+                         "arg1 = cipherFunction -> 'B' or 'S'\n"
                          "arg2 = inputFile -> 'filename'\n"
                          "arg3 = outoutFile -> 'filename'\n"
                          "arg4 = keyFile -> 'filename'\n"
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
     mode = +std::toupper(c);
   }
 
-  if (cipherFunction != "B" && cipherFunction != "G") {
+  if (cipherFunction != "B" && cipherFunction != "S") {
     throw invalid_argument("Invalid Cipher Argument\n" + arguementHelp);
   }
 

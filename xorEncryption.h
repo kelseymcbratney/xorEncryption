@@ -15,11 +15,15 @@ public:
 
 private:
   string openFile(string fileName);
-  void addBuffer(string fileContent);
-  void removeBuffer(string fileContent);
-  void encrypt(string fileContent, string keyFileString);
-  void decrypt(string fileContent, string keyFileString);
+  string addBuffer(string fileContent, int remainingBits);
+  string removeBuffer(string fileContent);
+  string encryptBlockCipher(string fileContent);
+  string decryptBlockCipher(string fileContent);
   void writeFile(string fileContent, string outputFile);
+  string streamCipher(string fileContent);
+  string blockCipher(string fileContent);
   string inputFileString;
   string keyFileString;
+  string blockCipherString;
+  string streamCipherString;
 };
