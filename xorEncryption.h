@@ -3,17 +3,19 @@
 using namespace std;
 #pragma once
 
-class xorEncyption {
+class xorEncryption {
+
 public:
   string cipherFunction;
   string inputFile;
   string outputFile;
   string keyFile;
   string mode;
-
   void init();
 
 private:
+  string inputFileString;
+  string keyFileString;
   string openFile(string fileName);
   string addBuffer(string fileContent, int remainingBits);
   string removeBuffer(string fileContent);
@@ -21,9 +23,7 @@ private:
   string decryptBlockCipher(string fileContent);
   void writeFile(string fileContent, string outputFile);
   string streamCipher(string fileContent);
-  string blockCipher(string fileContent);
-  string inputFileString;
-  string keyFileString;
-  string blockCipherString;
-  string streamCipherString;
+  string calculateBufferRequired(string fileContent);
+  string swapBlockCipher(string fileContents);
+  string xorBlockCipher(string fileContents);
 };

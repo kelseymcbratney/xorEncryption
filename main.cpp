@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
   }
   file2.close();
 
-  xorEncyption Obj;
+  xorEncryption Obj;
 
   Obj.cipherFunction = cipherFunction;
   Obj.inputFile = inputFile;
