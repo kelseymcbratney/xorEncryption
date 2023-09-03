@@ -8,11 +8,11 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
   string arguementHelp = "Please Run Program with the Following Arguments\n"
-                         "arg1 = cipherFunction -> 'B' or 'S'\n"
+                         "arg1 = Cipher Function -> 'B' or 'S'\n"
                          "arg2 = inputFile -> 'filename'\n"
                          "arg3 = outoutFile -> 'filename'\n"
                          "arg4 = keyFile -> 'filename'\n"
-                         "arg5 = mode -> 'E' or 'D'\n";
+                         "arg5 = Encryption Mode -> 'E' or 'D'\n";
 
   if (argc != 6) {
     throw invalid_argument("Missing Arguments\n" + arguementHelp);
