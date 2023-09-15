@@ -1,1 +1,19 @@
-Using "Make" in CLI will build the needed files, in order to lanch the program type "./pg1 arg1 arg2 arg3 arg4 arg5"
+Kelsey McBratney
+CS356 - Colorado State University
+Block and Stream Ciphers - Programming Assignment 1
+
+Build:
+run 'make' command to compile files
+
+Run:
+./main arg1 arg2 arg3 arg4 arg5 
+
+Arguements:
+arg1 = Cipher Function -> 'B' or 'S'
+arg2 = inputFile -> 'filename'
+arg3 = outoutFile -> 'filename'
+arg4 = keyFile -> 'filename'
+arg5 = Encryption Mode -> 'E' or 'D'
+
+Clean:
+run 'make clean' to remove all compiled files
