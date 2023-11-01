@@ -14,54 +14,66 @@ int main(int argc, char *argv[]) {
                          "arg4 = keyFile -> 'filename'\n"
                          "arg5 = Encryption Mode -> 'E' or 'D'\n";
 
-  if (argc != 6) {
-    throw invalid_argument("Missing Arguments\n" + arguementHelp);
-  }
+  string cipherFunction;
+  string inputFile;
+  string outputFile;
+  string keyFile;
+  string mode;
 
-  string cipherFunction = argv[1];
-  string inputFile = argv[2];
-  string outputFile = argv[3];
-  string keyFile = argv[4];
-  string mode = argv[5];
+  try {
+    if (argc != 6) {
+      throw invalid_argument("Missing Arguments\n" + arguementHelp);
+    }
 
-  for (char c : cipherFunction) {
-    cipherFunction = +std::toupper(c);
-  }
+    cipherFunction = argv[1];
+    inputFile = argv[2];
+    outputFile = argv[3];
+    keyFile = argv[4];
+    mode = argv[5];
 
-  for (char c : mode) {
-    mode = +std::toupper(c);
-  }
+    for (char &c : cipherFunction) {
+      c = toupper(c);
+    }
 
-  if (cipherFunction != "B" && cipherFunction != "S") {
-    throw invalid_argument("Invalid Cipher Argument\n" + arguementHelp);
-  }
+    for (char &c : mode) {
+      c = toupper(c);
+    }
 
-  if (mode != "E" && mode != "D") {
-    throw invalid_argument("Invalid Mode Argument\n" + arguementHelp);
-  }
+    if (cipherFunction != "B" && cipherFunction != "S") {
+      throw invalid_argument("Invalid Cipher Argument\n" + arguementHelp);
+    }
 
-  ifstream file(inputFile);
-  if (file.good() == false) {
+    if (mode != "E" && mode != "D") {
+      throw invalid_argument("Invalid Mode Argument\n" + arguementHelp);
+    }
+
+    ifstream file(inputFile);
+    if (!file.good()) {
+      file.close();
+      throw invalid_argument("Input File Doesn't Exist\n" + arguementHelp);
+    }
     file.close();
-    throw invalid_argument("Input File Doesn't Exist\n" + arguementHelp);
-  }
-  file.close();
 
-  ifstream file2(keyFile);
-  if (file2.good() == false) {
-    file2.close();
-    throw invalid_argument("Key File File Doesn't Exist\n" + arguementHelp);
-  } else {
-    char c;
-    while (file2.get(c)) {
-      if (c == '\n') {
-        throw invalid_argument(
-            "Key File Contains '\\n' Character, Remove it and Try Again\n" +
-            arguementHelp);
+    ifstream file2(keyFile);
+    if (!file2.good()) {
+      file2.close();
+      throw invalid_argument("Key File Doesn't Exist\n" + arguementHelp);
+    } else {
+      char c;
+      while (file2.get(c)) {
+        if (c == '\n') {
+          file2.close();
+          throw invalid_argument(
+              "Key File Contains '\\n' Character, Remove it and Try Again\n" +
+              arguementHelp);
+        }
       }
     }
+
+  } catch (const exception &e) {
+    cerr << "Error: " << e.what() << endl;
+    return -1;
   }
-  file2.close();
 
   xorEncryption Obj;
 
